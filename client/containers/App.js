@@ -60,9 +60,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav>
+        <nav className="cyan darken-2">
           <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">Logo</a>
+            <a href="#!" className="brand-logo">handi</a>
             <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               { this.links() }
@@ -75,7 +75,9 @@ class App extends React.Component {
           </div>
         </nav>
         <Flash />
-        {this.props.children}
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }
