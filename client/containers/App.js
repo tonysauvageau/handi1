@@ -13,6 +13,8 @@ class App extends React.Component {
   links = () => {
     return [
       { name: 'Home', path: '/' },
+      { name: 'Post a Job', path: '#' },
+      { name: 'Find a Job', path: '#' },
     ].map( (link, i) => {
       return this.link(i, link.name, link.path)
     })
@@ -60,20 +62,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav className="cyan darken-2">
-          <div className="nav-wrapper">
-            <a href="#!" className="brand-logo">handi</a>
-            <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
-            <ul className="right hide-on-med-and-down">
-              { this.links() }
-              { this.authLinks() }
-            </ul>
-            <ul className="side-nav" id="mobile">
-              { this.links() }
-              { this.authLinks() }
-            </ul>
-          </div>
-        </nav>
+        <div className="navbar-fixed">
+          <nav className="cyan darken-2">
+            <div className="nav-wrapper container">
+              <a href="#!" className="brand-logo">handi</a>
+              <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
+              <ul className="right hide-on-med-and-down">
+                { this.links() }
+                { this.authLinks() }
+              </ul>
+              <ul className="side-nav" id="mobile">
+                { this.links() }
+                { this.authLinks() }
+              </ul>
+            </div>
+          </nav>
+        </div>
         <Flash />
         <div>
           {this.props.children}

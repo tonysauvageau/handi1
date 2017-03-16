@@ -1,21 +1,34 @@
 import React from 'react';
 
-const Main = () => (
-  <div>
-    <div className="row">
-      <div className="col s12 m6">
-        <p className="right">
-          <a href="#" className="btn yellow darken-4">Post a Yob</a>
-        </p>
-      </div>
-      <div className="col s12 m6">
-        <p className="left">
-          <a href="#" className="btn orange darken-4">Find a Yob</a>
-        </p>
-      </div>
-    </div>
-  </div>
-)
+class Main extends React.Component {
 
+  componentDidMount(){
+    $(document).ready(function(){
+      $('.slider').slider({indicators: false});
+    });        
+  }
+
+  render(){
+    return(
+      <div>
+        <div className="slider fullscreen">
+          <ul className="slides" data-indicators="false">
+            <li>
+              <img src="/slider1.jpg"/>
+              <div className="caption center-align">
+                <h1>Welcome to handi</h1>
+                <p className="flow-text grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque massa quam, semper a dictum id, sodales nec ex. Donec sit amet tellus posuere, malesuada risus et, venenatis ex. Cras sed lectus convallis, gravida enim et, eleifend diam. Integer nec velit pharetra, accumsan magna quis, consequat urna. </p>
+                <a href="#" className="btn black btn-large">Find a Yob <i className="material-icons right">search</i></a>
+                &nbsp;
+                <a href="#" className="btn teal white-text btn-large">Post a Yob <i className="material-icons right">work</i></a>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    )
+  }
+}
 
 export default Main;
