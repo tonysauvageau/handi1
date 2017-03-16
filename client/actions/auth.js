@@ -22,6 +22,7 @@ export const logout = (router) => {
     }).done( () => {
       router.push('/signin')
       dispatch(setUser())
+      dispatch({ type: 'REMEMBER', remember: false })
     })
   }
 }
