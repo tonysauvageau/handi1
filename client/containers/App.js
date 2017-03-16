@@ -14,7 +14,7 @@ class App extends React.Component {
     return [
       { name: 'Home', path: '/' },
       { name: 'Post a Job', path: '/post-a-job' },
-      { name: 'Find a Job', path: '#' },
+      { name: 'Find a Job', path: '/find-a-job' },
     ].map( (link, i) => {
       return this.link(i, link.name, link.path)
     })
@@ -65,7 +65,7 @@ class App extends React.Component {
         <div className="navbar-fixed">
           <nav className="cyan darken-2">
             <div className="nav-wrapper container">
-              <a href="#!" className="brand-logo">handi</a>
+              <a href="/" className="brand-logo">handi</a>
               <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
               <ul className="right hide-on-med-and-down">
                 { this.links() }
