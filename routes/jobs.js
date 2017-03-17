@@ -17,6 +17,25 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+  const { title, category, description, startDate, endDate, location, budget, active} = req.body;
+  
+  new Job({
+    title,
+    category,
+    description,
+    startDate,
+    endDate,
+    location,
+    budget,
+    active
+  }).save( (err, job) => {
+    console.log(err);
+    res.json(job)
+  });
+
+});
+
 // router.get('/:id', (req, res) => {
 //   Song.findById(req.params.id, (err, song) => {
 //    res.json(song);

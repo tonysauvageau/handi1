@@ -7,6 +7,7 @@ import Auth from './components/Auth';
 import NotFound from './components/NotFound';
 import Main from './components/Main';
 import PostAJob from './components/PostAJob';
+import JobListings from './components/JobListings';
 import JobListing from './components/JobListing';
 
 const AdminAccess = UserAuthWrapper({
@@ -24,11 +25,13 @@ export default (
      <IndexRoute component={Main} />
      <Route path="signup" component={Auth} title="Sign Up" />
      <Route path="signin" component={Auth} title="Sign In" />
-     
+     <Route path="/post-a-job" component={PostAJob} />
      <Route component={AuthenticatedRoutes}>
-       <Route path="/post-a-job" component={PostAJob} />
-       <Route path="/find-a-job" component={JobListing} />
-         {/* PROTECTED BY AUTHENTICATION */}
+        {/* PROTECTED BY AUTHENTICATION */}
+        
+        <Route path="/find-a-job" component={JobListings} />
+        <Route path="/jobs/:id" component={JobListing} />
+       
        <Route component={AdminRoutes}>
            {/* PROTECTED BY ADMIN ACCESS */}
        </Route>

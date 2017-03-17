@@ -13,7 +13,7 @@ mongoose.connect(mongoURI);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-const job = require('./routes/jobs');
+const job = require('./routes/jobs'); 
 
 const app = express();
 
