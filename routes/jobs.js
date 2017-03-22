@@ -12,8 +12,8 @@ const isAuthenticated = (req, res, next) => {
 
 
 router.get('/', (req, res) => {
-  User.find( (err, users) => {
-    res.json(users);
+  Job.find( (err, jobs) => {
+    res.json(jobs);
   });
 });
 
@@ -36,11 +36,11 @@ router.post('/', (req, res) => {
 
 });
 
-// router.get('/:id', (req, res) => {
-//   Song.findById(req.params.id, (err, song) => {
-//    res.json(song);
-//   });
-// });
+router.get('/:id', (req, res) => {
+  Job.findById(req.params.id, (err, job) => {
+   res.json(job);
+  });
+});
 
 
 // router.post('/', (req, res) => {

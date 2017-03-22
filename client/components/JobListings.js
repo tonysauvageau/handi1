@@ -27,7 +27,6 @@ class JobListing extends React.Component {
         <p className="flow-text grey-text">Use the filter options to find all the jobs you're capable of doing and start placing your bids today!</p>
         <ul className="collection">
           { jobs }
-          <li className="collection-item">Empty Job</li>
         </ul>
       </div>
     )

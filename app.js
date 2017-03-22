@@ -14,6 +14,7 @@ mongoose.connect(mongoURI);
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const job = require('./routes/jobs'); 
+const quote = require('./routes/quote'); 
 
 const app = express();
 
@@ -45,6 +46,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use('/api/auth', auth);
 app.use('/api/jobs', job);
+app.use('/api/quote', quote);
+
 
 app.use('*', index);
 

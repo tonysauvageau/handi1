@@ -48,7 +48,7 @@ class JobPostForm extends React.Component {
 
     let jobs = this.state.jobs.map( job => {
       return (
-        <li key={job._id} className="collection-item">{job.title}</li>
+        <li key={job._id} className="collection-item"><a href={`/jobs/${job._id}`}>{job.title}</a></li>
       )
     });
 
