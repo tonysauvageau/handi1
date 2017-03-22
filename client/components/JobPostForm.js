@@ -53,7 +53,7 @@ class JobPostForm extends React.Component {
     });
 
     return(
-      <div className="container">
+      <div className="">
         <div className="row">
           <div className="col s12">
             <ul className="collection">
@@ -62,8 +62,9 @@ class JobPostForm extends React.Component {
           </div>
         </div>
         
-        <form ref="form" onSubmit={this.addJob}>
-          
+        <div className="card">
+          <div className="card-content">
+          <form ref="form" onSubmit={this.addJob}>
           <div className="row">
             <div className="col s12 m6">
               <input ref="title" placeholder="Enter job title" />
@@ -111,10 +112,12 @@ class JobPostForm extends React.Component {
 
           <div className="row">
             <div className="col s12">
-              <input type="submit" className="btn teal"/>
+              <input type="submit" className="btn orange darken-4"/>
             </div>
           </div> 
         </form>
+      </div>
+      </div>
       </div>
 
     )

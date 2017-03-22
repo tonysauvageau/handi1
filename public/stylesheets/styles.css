@@ -1,0 +1,22 @@
+html, body {
+    font-size: 16px;
+    }
+p {
+    font-size: 1.25em;
+}    
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #0097a7;
+    }
+    
+h1 {
+    font-size: 1.7rem;
+    }
+
+.container {
+    max-width: 800px;
+}
+
+form {
+    1px solid black;
+}
