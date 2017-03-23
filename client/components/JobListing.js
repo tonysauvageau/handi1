@@ -16,16 +16,51 @@ class JobListing extends React.Component {
     let {job} = this.state
     return (
       <div className="container">
-        {job.title}<br />
-        {job.category}<br />
-        {job.description}<br />
-        {job.startDate}<br />
-        {job.endDate}<br />
-        {job.location}<br />
-        {job.budget}<br />
-        {job.active}
+          
+          <div className="jobDisplay">
+            <div className="row">
+              <div className="col s6 m6">
+                <label>Title</label><br />
+                {job.title}
+              </div>
+              <div className="col s6 m6">
+                <label>Category</label><br />
+                {job.category}
+              </div>
+            </div>
+            <div className="row">
+              <div className="col s12 m12">
+                <label>Description</label><br />
+                {job.description}
+              </div>
+            </div>
+           
+            <div className="row">
+                <div className="col s6 m3">
+                  <label>Start</label><br />
+                  {job.startDate}
+                </div>
+                <div className="col s6 m3">
+                  <label>End</label><br />
+                  {job.endDate}
+                </div>
+                <div className="col s6 m3">
+                <label>Location</label><br />
+                {job.location}
+                </div>
+                <div className="col s6 m3">
+                <label>Budget</label><br />
+                {job.budget}          {job.active}
+                </div>
+            </div>
+
+
+        </div>
+
 
       <QuoteForm jobid={job._id}/>
+
+
       </div>
     )
 
