@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const {estimate, quote, jobid, user } = req.body;
-
+  console.log(req.body)
 
   new Quote({
     estimate,
@@ -27,8 +27,11 @@ router.post('/', (req, res) => {
     jobid,
     user
   }).save( (err, quote) => {
-    console.log(err);
-    res.json(quote)
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(quote)
+    }
   });
 
 });

@@ -5,7 +5,7 @@ class QuoteForm extends React.Component {
 
 addQuote = (e) => {
     e.preventDefault();
-
+    
     $.ajax({
       url: '/api/quote',
       type: 'POST',
@@ -14,13 +14,13 @@ addQuote = (e) => {
         quote: this.refs.quote.value,
         message: this.refs.message.value,
         jobid: this.refs.jobid.value,
-        user: this.refs.user.value
+        user: this.props.user.username
       }
     }).done ( job => {
       this.refs.form.reset();
       this.refs.estimate.focus();
     }).fail ( job => {
-      console.log('err '+job)
+      console.log('err ', job)
     });
   }
 
@@ -47,7 +47,7 @@ render() {
                 <div className="row">
                     <div>
                         <input type="hidden" ref="jobid" value={this.props.jobid} />
-                        <input type="hidden" ref="user" value={this.props.user.email} />
+                        <input type="hidden" ref="user" value={this.props.user.username} />
                     </div>
                     <div className="input-field">
                         <button className="btn" type="submit">Submit</button>

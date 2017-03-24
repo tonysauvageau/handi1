@@ -6,7 +6,7 @@ let Quote = new Schema({
   quote: { type: String, required: true },
   message: { type: String },
   jobid: { type: String, required: true },
-  userid: { type: String, required: true }
+  user: { type: String, required: true }
 });
 
 module.exports = mongoose.model( 'Quote', Quote );
