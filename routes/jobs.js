@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, category, description, startDate, endDate, location, budget, active} = req.body;
+  const { title, category, description, startDate, endDate, location, budget, user, active} = req.body;
 
   new Job({
     title,
