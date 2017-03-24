@@ -1,16 +1,18 @@
 import React from 'react';
 import QuoteListings from './QuoteListings';
+import { connect } from 'react-redux';
 class QuoteForm extends React.Component {
 
 addQuote = (e) => {
     e.preventDefault();
-   
+
     $.ajax({
       url: '/api/quote',
       type: 'POST',
-      data: { 
+      data: {
         estimate: this.refs.estimate.value,
         quote: this.refs.quote.value,
+        message: this.refs.message.value,
         jobid: this.refs.jobid.value,
         userid: this.refs.userid.value
       }
@@ -23,10 +25,10 @@ addQuote = (e) => {
   }
 
 render() {
-    
-    return (
-        <div className="container">
 
+    return (
+        <div>
+          <h1>Submit a Quote</h1>
             <form ref="form" onSubmit={this.addQuote}>
                 <div className="row">
                     <div className="input-field col s6">
@@ -35,6 +37,12 @@ render() {
                     <div className="input-field col s6">
                         <input placeholder="Quote" ref="quote" id="quote" type="number" className="validate"/>
                     </div>
+                </div>
+                <div className="row">
+                    <div className="input-field col s12">
+                        <input type="text" placeholder="Add a Message" ref="message"/>
+                    </div>
+
                 </div>
                 <div className="row">
                     <div>
@@ -50,13 +58,15 @@ render() {
             <div className="row">
                 <QuoteListings jobid={this.props.jobid}/>
             </div>
-        </div> 
+        </div>
     )
 }
 
 
 }
 
-export default QuoteForm;
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
 
- 
+export default connect(mapStateToProps)(QuoteForm);

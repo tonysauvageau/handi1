@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const { title, category, description, startDate, endDate, location, budget, active} = req.body;
-  
+
   new Job({
     title,
     category,
@@ -28,7 +28,8 @@ router.post('/', (req, res) => {
     endDate,
     location,
     budget,
-    active
+    active,
+    user
   }).save( (err, job) => {
     console.log(err);
     res.json(job)

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class QuoteListings extends React.Component {
-  
+
   state = { quotes: [] }
 
   componentDidMount() {
@@ -17,16 +18,16 @@ class QuoteListings extends React.Component {
   render() {
     let quotes = this.state.quotes.map( quote => {
         if (quote.jobid == this.props.jobid) {
-            return ( 
-                <li key={quote._id} className="collection-item"><Link to={`/quotes/${quote._id}`}>{`userName quoted the job for ${quote.quote}`}</Link></li>
+            return (
+                <li key={quote._id} className="collection-item"><Link to={`/quotes/${quote._id}`}>{`${this.props.user.username} quoted the job for ${quote.quote}`}</Link></li>
             )
         }
     })
-    
+
     return(
-      <div className="container">
-        <h1>Find a quote</h1>
-        <p className="flow-text grey-text">Use the filter options to find all the quotes you're capable of doing and start placing your bids today!</p>
+      <div>
+        <h1>Quote Listing</h1>
+
         <ul className="collection">
           { quotes }
         </ul>
@@ -36,4 +37,8 @@ class QuoteListings extends React.Component {
 
 }
 
-export default QuoteListings;
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps)(QuoteListings);

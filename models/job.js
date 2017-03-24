@@ -10,8 +10,8 @@ let Job = new Schema({
   location: { type: String, required: true },
   //image: { type: String },
   budget: { type: Number },
-  active: { type: Boolean, default: true }
+  active: { type: Boolean, default: true },
+  user: { type: String, default: ''}
 });
 
 module.exports = mongoose.model( 'Job', Job );
-
