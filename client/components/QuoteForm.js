@@ -14,7 +14,7 @@ addQuote = (e) => {
         quote: this.refs.quote.value,
         message: this.refs.message.value,
         jobid: this.refs.jobid.value,
-        userid: this.refs.userid.value
+        user: this.refs.user.value
       }
     }).done ( job => {
       this.refs.form.reset();
@@ -47,7 +47,7 @@ render() {
                 <div className="row">
                     <div>
                         <input type="hidden" ref="jobid" value={this.props.jobid} />
-                        <input type="hidden" ref="userid" value="1" />
+                        <input type="hidden" ref="user" value={this.props.user.email} />
                     </div>
                     <div className="input-field">
                         <button className="btn" type="submit">Submit</button>

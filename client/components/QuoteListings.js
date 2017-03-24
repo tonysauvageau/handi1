@@ -19,7 +19,7 @@ class QuoteListings extends React.Component {
     let quotes = this.state.quotes.map( quote => {
         if (quote.jobid == this.props.jobid) {
             return (
-                <li key={quote._id} className="collection-item"><Link to={`/quotes/${quote._id}`}>{`${this.props.user.username} quoted the job for ${quote.quote}`}</Link></li>
+                <li key={quote._id} className="collection-item"><Link to={`/quotes/${quote._id}`}>{`${quote.user} quoted the job for ${quote.quote}`}</Link></li>
             )
         }
     })

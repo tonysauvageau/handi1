@@ -18,14 +18,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const {estimate, quote, jobid, userid } = req.body;
-  
-  
+  const {estimate, quote, jobid, user } = req.body;
+
+
   new Quote({
     estimate,
     quote,
     jobid,
-    userid
+    user
   }).save( (err, quote) => {
     console.log(err);
     res.json(quote)
