@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class JobPostForm extends React.Component {
   state = { jobs: [] }
@@ -49,9 +50,11 @@ class JobPostForm extends React.Component {
   render(){
 
     let jobs = this.state.jobs.map( job => {
-      return (
-        <li key={job._id} className="collection-item"><a href={`/jobs/${job._id}`}>{job.title}</a></li>
-      )
+      if ( job.user == this.props.user._id ){
+        return (
+          <li key={job._id} className="collection-item"><Link to={`/jobs/${job._id}`}>{job.title}</Link></li>
+        )
+      }
     });
 
     return(
