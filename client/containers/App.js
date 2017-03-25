@@ -37,8 +37,8 @@ class App extends React.Component {
         });
         links.push(
           <li key="logout">
-            <a 
-              href="#" 
+            <a
+              href="#"
               onClick={ e => {
                 this.props.dispatch(logout(this.props.router))
               }}

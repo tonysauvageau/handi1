@@ -80,7 +80,7 @@ class JobPostForm extends React.Component {
                       <option value="1">Landscaping</option>
                       <option value="2">Painting</option>
                       <option value="3">Plumbing</option>
-                      <option value="3">Meow Meow</option>
+                      <option value="4">Meow Meow</option>
                       </select>
                     </div>
                   </div>

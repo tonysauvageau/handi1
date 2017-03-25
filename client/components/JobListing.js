@@ -3,6 +3,9 @@ import QuoteForm from './QuoteForm';
 
 class JobListing extends React.Component {
   state = {job:[]}
+
+
+
   componentDidMount() {
       $.ajax({
         url: `/api/jobs/${this.props.params.id}`,
@@ -11,12 +14,13 @@ class JobListing extends React.Component {
         this.setState({ job });
       });
   }
-  
+
   render() {
+    let jobCats = [ "Landscaping", "Painting", "Plumbing", "Meow Meow", "Extra"]
     let {job} = this.state
     return (
       <div className="container">
-          
+
           <div className="jobDisplay">
             <div className="row">
               <div className="col s6 m6">
@@ -25,7 +29,7 @@ class JobListing extends React.Component {
               </div>
               <div className="col s6 m6">
                 <label>Category</label><br />
-                {job.category}
+                {jobCats[job.category - 1]}
               </div>
             </div>
             <div className="row">
@@ -34,7 +38,7 @@ class JobListing extends React.Component {
                 {job.description}
               </div>
             </div>
-           
+
             <div className="row">
                 <div className="col s6 m3">
                   <label>Start</label><br />
@@ -50,7 +54,7 @@ class JobListing extends React.Component {
                 </div>
                 <div className="col s6 m3">
                 <label>Budget</label><br />
-                {job.budget}          {job.active}
+                ${job.budget}.00         {job.active}
                 </div>
             </div>
 
