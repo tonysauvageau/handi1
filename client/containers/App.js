@@ -4,6 +4,7 @@ import { logout, refreshLogin } from '../actions/auth';
 import { connect } from 'react-redux';
 import Flash from '../components/Flash';
 
+
 class App extends React.Component {
   componentDidMount() {
     $(".button-collapse").sideNav({ closeOnClick: true });
