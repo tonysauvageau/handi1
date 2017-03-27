@@ -1,7 +1,7 @@
 html, body {
     font-size: 16px;
     }
-p {
+p, ol, ul {
     font-size: 1.25em;
     color: #808285;
     font-weight: 300;
@@ -149,4 +149,48 @@ form {
     border: 1px solid #58595b;
     box-shadow: 5px 5px 5px #e6e7e8;
     margin-top: 30px;
+}
+.LandingPageContainer{
+    max-width: 3000px;
+    }
+.bullets ul{
+    line-height: 110%;
+
+}
+.bullets li{
+    list-style-type: disc !important;
+}
+.section{
+    max-width: 800px;
+    margin: 40px auto !important;
+    float: none !important;
+}
+.section img {
+    margin: 2.1rem 0 1.68rem 0;
+    padding: 0;
+    border: 2px solid #0097a7;
+    object-fit: fill;
+    border-radius: 5px;
+    }
+    
+.section2Wrap{
+    max-width: 3000px !important;
+    background: #d4f4f7;
+}
+
+.slider .slides .caption{
+    width: 800px;
+    margin: 0 auto !important;
+    float: none !important;
+}    
+.slider, .slides {
+    height: 250px !important;
+}
+
+.slider .slides li img{
+    opacity: .5;
+}
+
+.slider .slides {
+    background: #043d43;
 }

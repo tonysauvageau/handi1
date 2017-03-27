@@ -66,7 +66,7 @@ class App extends React.Component {
         <div className="navbar-fixed">
           <nav className="cyan darken-2">
             <div className="nav-wrapper container">
-              <a href="/" className="brand-logo">handi</a>
+              <a href="/" className="brand-logo"><img src="img/handilogo.png"/></a>
               <a href="#" data-activates="mobile" className="button-collapse"><i className="material-icons">menu</i></a>
               <ul className="right hide-on-med-and-down">
                 { this.links() }
