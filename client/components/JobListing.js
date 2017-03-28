@@ -18,6 +18,8 @@ class JobListing extends React.Component {
   render() {
     let jobCats = [ "Landscaping", "Painting", "Plumbing", "Meow Meow", "Extra"]
     let {job} = this.state
+
+
     return (
       <div className="container">
 
@@ -42,6 +44,7 @@ class JobListing extends React.Component {
             <div className="row">
                 <div className="col s6 m3">
                   <label>Start</label><br />
+                  
                   {job.startDate}
                 </div>
                 <div className="col s6 m3">

@@ -2,13 +2,17 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-class JobListing extends React.Component {
+class JobListings extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { jobs: [], category: '' };
+    this.handleChange = this.handleChange.bind(this);
 
-  state = { jobs: [] }
 
+}
   componentDidMount() {
 
-    $('select').material_select();
+    //$('select').material_select();
 
     $.ajax({
       url: '/api/jobs',
@@ -18,12 +22,25 @@ class JobListing extends React.Component {
     });
   }
 
+  handleChange = (event) => {
+    this.setState({category: event.target.value});
+  }
 
-  filterByJobType = () => {
-    const jobType = this.refs.category.value;
-    let jobs = this.state.jobs.map( job => {
-      if (job.category === jobType ) {
-        return(
+
+  filteredJobs = () => {
+    if ( this.state.category === "all" ) {
+      return this.state.jobs
+    } else {
+    return this.state.jobs.filter( job => job.category === this.state.category )
+  }
+}
+
+
+
+  render() {
+
+      let jobs = this.filteredJobs().map( job => {
+        return (
           <li key={job._id} className="joblisting">
             <Link to={`/jobs/${job._id}`}>
             <div className="row joblisting">
@@ -42,41 +59,7 @@ class JobListing extends React.Component {
               </div>
             </Link>
           </li>
-
         )
-      }
-
-    })
-
-
-
-
-  }
-
-  render() {
-
-
-      let jobs = this.state.jobs.map( job => {
-      return (
-        <li key={job._id} className="joblisting">
-          <Link to={`/jobs/${job._id}`}>
-          <div className="row joblisting">
-              <div className="col s2 m2">
-                {job.startDate}
-              </div>
-              <div className="col s2 m2">
-                {job.endDate}
-              </div>
-              <div className="col s6 m6">
-                {job.title}
-              </div>
-              <div className="col s2 m2">
-                {job.budget}
-              </div>
-            </div>
-          </Link>
-        </li>
-      )
     })
 
     return(
@@ -91,13 +74,15 @@ class JobListing extends React.Component {
           <div className="row">
             <div className="col s12 m6">
               <label>Category</label>
+
               <div className="input-field filterDrop ">
-                <select onChange={this.filterByJobType} className="initialized" ref="category" defaultValue="landscaping">
-                  <option>What type of service do you need?</option>
+                <select value={this.state.category} onChange={this.handleChange} className="initialized browser-default" ref="category" defaultValue="landscaping">
+                  <option value="" disabled>What type of service do you need?</option>
+                  <option value="all">All</option>
                   <option value="1">Landscaping</option>
                   <option value="2">Painting</option>
                   <option value="3">Plumbing</option>
-                  <option value="3">Meow Meow</option>
+                  <option value="4">Meow Meow</option>
                   </select>
               </div>
               </div>
@@ -166,4 +151,4 @@ class JobListing extends React.Component {
 
 }
 
-export default JobListing;
+export default JobListings;
