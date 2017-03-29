@@ -43,25 +43,16 @@ router.get('/:id', (req, res) => {
   });
 });
 
-
-// router.post('/', (req, res) => {
-//   const { title, artist, lyrics } = req.body;
-//   new Song({
-//     title,
-//     artist,
-//     lyrics
-//   }).save( (err,song) => {
-//     res.json(song)
-//   });
-// });
-
-// router.delete('/:id', (req, res) => {
-//   Song.findById(req.params.id, (err, song) => {
-//     song.remove( (err, song) => {
-//       res.status('200');
-//     });
-//   });
-// });
+router.put('/:id', ( req, res ) => {
+  let { job } = req.body;
+  Job.findByIdAndUpdate(
+    req.params.id,
+    { $set: { job }},
+    { new: true },
+    (err, job) => {
+      res.json(job);
+    });
+});
 
 
 module.exports = router;

@@ -1,9 +1,11 @@
 import React from 'react';
 import QuoteForm from './QuoteForm';
+import { connect } from 'react-redux';
+
 const moment = require('moment');
 
 class JobListing extends React.Component {
-  state = {job:[]}
+  state = {job:[], status: ''}
 
 
 
@@ -16,18 +18,47 @@ class JobListing extends React.Component {
       });
   }
 
+  toggleActive = () => {
+    this.state.job.active = !this.state.job.active
+    let job = this.state
+    $.ajax({
+      url: `/api/jobs/${this.props.params.id}`,
+      type: 'PUT',
+      data: { job }
+    }).done( job => {
+      console.log('job updated');
+    });
+  }
+
+  jobStatus = () => {
+    if(this.state.job.user === this.props.user._id)
+    {
+      if(this.state.job.active)
+      {
+        return (
+          <a href="#!" onClick={this.toggleActive}>Deactivate</a>
+        )  
+      }
+    }
+    else {
+      return (
+        <div>almost there</div>
+      )
+    }
+  }
+
   render() {
     let {job} = this.state
 
 
     return (
       <div className="container">
-
+        {this.jobStatus()}
           <div className="jobDisplay">
             <div className="row">
               <div className="col s6 m6">
                 <label>Title</label><br />
-                {job.title}
+                {job.title} 
               </div>
               <div className="col s6 m6">
                 <label>Category</label><br />
@@ -74,4 +105,8 @@ class JobListing extends React.Component {
 
 }
 
-export default JobListing;
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps)(JobListing);

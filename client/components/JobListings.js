@@ -60,26 +60,27 @@ class JobListings extends React.Component {
   render() {
 
       let jobs = this.sorted().map( job => {
-        return (
-          <li key={job._id} className="joblisting">
-            <Link to={`/jobs/${job._id}`}>
-            <div className="row joblisting">
-                <div className="col s2 m2">
-                  {moment(job.startDate).format("L")}
+        if(job.active)
+          return (
+            <li key={job._id} className="joblisting">
+              <Link to={`/jobs/${job._id}`}>
+              <div className="row joblisting">
+                  <div className="col s2 m2">
+                    {moment(job.startDate).format("L")}
+                  </div>
+                  <div className="col s2 m2">
+                    {moment(job.endDate).format("L")}
+                  </div>
+                  <div className="col s6 m6">
+                    {job.title}
+                  </div>
+                  <div className="col s2 m2">
+                    {job.budget}
+                  </div>
                 </div>
-                <div className="col s2 m2">
-                  {moment(job.endDate).format("L")}
-                </div>
-                <div className="col s6 m6">
-                  {job.title}
-                </div>
-                <div className="col s2 m2">
-                  {job.budget}
-                </div>
-              </div>
-            </Link>
-          </li>
-        )
+              </Link>
+            </li>
+          )
     })
 
     return(
@@ -99,10 +100,17 @@ class JobListings extends React.Component {
                 <select value={this.state.category} onChange={this.handleChange} className="initialized browser-default" ref="category" defaultValue="landscaping">
                   <option value="" disabled>What type of service do you need?</option>
                   <option value="all">All</option>
-                  <option value="1">Landscaping</option>
-                  <option value="2">Painting</option>
-                  <option value="3">Plumbing</option>
-                  <option value="4">Meow Meow</option>
+                  <option value="Sitting">Baby Sitting</option>                                            
+                  <option value="Carpet">Carpet</option>
+                  <option value="Construction">Construction</option>
+                  <option value="Concrete">Concrete</option>                      
+                  <option value="Electrical">Electrical</option>      
+                  <option value="Cleaning">House Cleaning</option>     
+                  <option value="Landscaping">Landscaping</option>
+                  <option value="Moving">Moving</option>           
+                  <option value="Other">Other (See Description)</option>                                                       
+                  <option value="Painting">Painting</option>
+                  <option value="Plumbing">Plumbing</option>
                   </select>
               </div>
             </div>
