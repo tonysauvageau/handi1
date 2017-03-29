@@ -1,5 +1,6 @@
 import React from 'react';
 import QuoteForm from './QuoteForm';
+const moment = require('moment');
 
 class JobListing extends React.Component {
   state = {job:[]}
@@ -16,7 +17,6 @@ class JobListing extends React.Component {
   }
 
   render() {
-    let jobCats = [ "Landscaping", "Painting", "Plumbing", "Meow Meow", "Extra"]
     let {job} = this.state
 
 
@@ -31,7 +31,7 @@ class JobListing extends React.Component {
               </div>
               <div className="col s6 m6">
                 <label>Category</label><br />
-                {jobCats[job.category - 1]}
+                {job.category}
               </div>
             </div>
             <div className="row">
@@ -44,12 +44,11 @@ class JobListing extends React.Component {
             <div className="row">
                 <div className="col s6 m3">
                   <label>Start</label><br />
-                  
-                  {job.startDate}
+                  {moment(job.startDate).format("dddd, MMMM Do YYYY")}
                 </div>
                 <div className="col s6 m3">
                   <label>End</label><br />
-                  {job.endDate}
+                  {moment(job.endDate).format("dddd, MMMM Do YYYY")}
                 </div>
                 <div className="col s6 m3">
                 <label>Location</label><br />
@@ -57,7 +56,7 @@ class JobListing extends React.Component {
                 </div>
                 <div className="col s6 m3">
                 <label>Budget</label><br />
-                ${job.budget}.00         {job.active}
+                ${job.budget}.00 
                 </div>
             </div>
 

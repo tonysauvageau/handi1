@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
-
+const moment = require('moment');
 
 class JobListings extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { jobs: [], category: '' };
+    this.state = { jobs: [], category: 'all' , sortOrder : false};
     this.handleChange = this.handleChange.bind(this);
 
 
@@ -29,26 +29,46 @@ class JobListings extends React.Component {
 
   filteredJobs = () => {
     if ( this.state.category === "all" ) {
-      return this.state.jobs
-    } else {
-    return this.state.jobs.filter( job => job.category === this.state.category )
+        return this.state.jobs
+      } else {
+      return this.state.jobs.filter( job => job.category === this.state.category )
+    }
   }
-}
 
+  sorted = () => {
+     if(this.state.sortOrder === true){
+      return this.filteredJobs().sort( (a,b) => {
+        if (a.budget > b.budget ) return 1;
+        if (a.budget < b.budget ) return -1;
+        return 0;
+      })
+     }
+     else{
+       return this.filteredJobs().sort( (a,b) => {
+        if (a.budget > b.budget ) return -1;
+        if (a.budget < b.budget ) return 1;
+        return 0;
+      })
+     }
 
+  }
+
+  descending = () =>{
+    this.setState({ sortOrder : !this.state.sortOrder})
+  }
 
   render() {
 
-      let jobs = this.filteredJobs().map( job => {
+      let jobs = this.sorted().map( job => {
         return (
           <li key={job._id} className="joblisting">
             <Link to={`/jobs/${job._id}`}>
             <div className="row joblisting">
                 <div className="col s2 m2">
-                  {job.startDate}
+                  {moment(job.startDate).format("L")}
                 </div>
                 <div className="col s2 m2">
-                  {job.endDate}
+                  {moment(job.endDate).format("L")}
                 </div>
                 <div className="col s6 m6">
                   {job.title}
@@ -72,7 +92,7 @@ class JobListings extends React.Component {
 
         <form ref="form" className="filter">
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12">
               <label>Category</label>
 
               <div className="input-field filterDrop ">
@@ -85,40 +105,8 @@ class JobListings extends React.Component {
                   <option value="4">Meow Meow</option>
                   </select>
               </div>
-              </div>
-
-              <div className="col s4 m2">
-                <label>Time Left</label>
-                  <div className="filterBtn"><button>>1</button></div>
-              </div>
-              <div className="col s4 m2">
-                <label> &nbsp;</label>
-                  <div className="filterBtn"><button>5-10</button> </div>
-              </div>
-              <div className="col s4 m2">
-                <label>&nbsp;</label>
-                  <div className="filterBtn"><button>10></button></div>
-              </div>
             </div>
-
-            <div className="row">
-                <div className="col s6 m3">
-                  <input ref="min" placeholder="$ Min" id="min" type="number" />
-                </div>
-                <div className="col s6 m3">
-                  <input ref="max" placeholder="$ Max" id="max" type="number" />
-                </div>
-
-                <div className="col s4 m2">
-                    <div className="filterBtn"><button>Open</button></div>
-                </div>
-                <div className="col s4 m2">
-                    <div className="filterBtn"><button>Finished</button></div>
-                </div>
-                <div className="col s4 m2">
-                    <div className="filterStart"><button>Filter</button></div>
-                </div>
-            </div>
+          </div>  
         </form>
 
           <div className="row">
@@ -130,10 +118,10 @@ class JobListings extends React.Component {
               <label>End</label>
             </div>
             <div className="col s6 m6">
-              <label>Description</label>
+              <label>Job Name</label>
             </div>
             <div className="col s2 m2">
-              <label>Budget</label>
+              <label><a href="#!" onClick={this.descending}>Budget <i className="material-icons right">swap_vert</i></a></label>
             </div>
         </div>
         <hr />

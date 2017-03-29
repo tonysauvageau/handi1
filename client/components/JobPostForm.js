@@ -75,12 +75,19 @@ class JobPostForm extends React.Component {
 
                   <div className="row">
                     <div className="input-field col s12">
-                      <select className="initialized" ref="category" defaultValue="landscaping">
+                      <select className="initialized" ref="category" defaultValue="Landscaping">
                       <option>What type of service do you need?</option>
-                      <option value="1">Landscaping</option>
-                      <option value="2">Painting</option>
-                      <option value="3">Plumbing</option>
-                      <option value="4">Meow Meow</option>
+                      <option value="Landscaping">Landscaping</option>
+                      <option value="Painting">Painting</option>
+                      <option value="Plumbing">Plumbing</option>
+                      <option value="Construction">Construction</option>
+                      <option value="Moving">Moving</option>
+                      <option value="Carpet">Carpet</option>
+                      <option value="Electrical">Electrical</option>                      
+                      <option value="Cleaning">House Cleaning</option>                      
+                      <option value="Sitting">Baby Sitting</option>                      
+                      <option value="Concrete">Concrete</option>                      
+                      <option value="Other">Other (See Description)</option>                      
                       </select>
                     </div>
                   </div>
