@@ -44,14 +44,22 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', ( req, res ) => {
-  let { job } = req.body;
+  let { title, description, startDate, endDate, location, budget } = req.body;
   Job.findByIdAndUpdate(
     req.params.id,
-    { $set: { job }},
+    { $set: { title, description, startDate, endDate, location, budget  }},
     { new: true },
     (err, job) => {
       res.json(job);
     });
+});
+
+router.delete('/:id', (req, res) => {
+  let jobId = req.params.id;
+  Job.findById(jobId, (err, job) => {
+    job.remove();
+    res.status(200).send({success: true});
+  });
 });
 
 
