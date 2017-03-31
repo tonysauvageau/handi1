@@ -18,14 +18,15 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const {estimate, quote, jobid, user } = req.body;
+  const {estimate, quote, jobid, user, message } = req.body;
   console.log(req.body)
 
   new Quote({
     estimate,
     quote,
     jobid,
-    user
+    user,
+    message
   }).save( (err, quote) => {
     if (err) {
       console.log(err);

@@ -28,7 +28,7 @@ render() {
 
     return (
         <div>
-          <h1>Submit a Quote</h1>
+          <p>Submit a Quote</p>
             <form ref="form" onSubmit={this.addQuote}>
                 <div className="row">
                     <div className="input-field col s6">

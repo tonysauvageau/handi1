@@ -13,22 +13,28 @@ class QuoteListings extends React.Component {
     }).done( quotes => {
       this.setState({ quotes });
     });
+
+    $('.collapsible').collapsible();
   }
+
 
   render() {
     let quotes = this.state.quotes.map( quote => {
         if (quote.jobid == this.props.jobid) {
             return (
-                <li key={quote._id} className="collection-item"><Link to={`/quotes/${quote._id}`}>{`${quote.user} quoted the job for ${quote.quote}`}</Link></li>
+                <li key={quote._id}>
+                  <div className="collapsible-header">{`${quote.user} quoted the job for $ ${quote.quote}`}</div>
+                  <div className="collapsible-body"><p>I can complete this in {quote.estimate}. <br/> {quote.message}</p></div>
+                </li>
             )
         }
     })
 
     return(
       <div>
-        <h1>Quote Listing</h1>
+        <h1>Quote Listings</h1>
 
-        <ul className="collection">
+        <ul className="collapsible" data-collapsible="accordion">
           { quotes }
         </ul>
       </div>
@@ -42,3 +48,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(QuoteListings);
+

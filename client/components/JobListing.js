@@ -18,33 +18,16 @@ class JobListing extends React.Component {
       });
   }
 
-  toggleActive = () => {
-    this.state.job.active = !this.state.job.active
+  toggleActive = () => {    
     let job = this.state
+    
     $.ajax({
       url: `/api/jobs/${this.props.params.id}`,
       type: 'PUT',
-      data: { job }
+      data: { job: { active: false } }
     }).done( job => {
-      console.log('job updated');
+      console.log(job.active);
     });
-  }
-
-  jobStatus = () => {
-    if(this.state.job.user === this.props.user._id)
-    {
-      if(this.state.job.active)
-      {
-        return (
-          <a href="#!" onClick={this.toggleActive}>Deactivate</a>
-        )  
-      }
-    }
-    else {
-      return (
-        <div>almost there</div>
-      )
-    }
   }
 
   render() {
@@ -52,51 +35,36 @@ class JobListing extends React.Component {
 
 
     return (
-      <div className="container">
-        {this.jobStatus()}
-          <div className="jobDisplay">
-            <div className="row">
-              <div className="col s6 m6">
-                <label>Title</label><br />
-                {job.title} 
-              </div>
-              <div className="col s6 m6">
-                <label>Category</label><br />
-                {job.category}
-              </div>
+      <div>
+        <nav className="grey darken-4">
+          <div className="nav-wrapper container">
+            <div className="col s12">
+              <a href="/" className="breadcrumb">Home</a>
+              <a href="/find-a-job" className="breadcrumb">Jobs</a>
+              <a href="#" className="breadcrumb">{job.title}</a>
             </div>
-            <div className="row">
-              <div className="col s12 m12">
-                <label>Description</label><br />
-                {job.description}
-              </div>
-            </div>
+          </div>
+        </nav>
+        <br/>
+        <div className="container">
 
-            <div className="row">
-                <div className="col s6 m3">
-                  <label>Start</label><br />
-                  {moment(job.startDate).format("dddd, MMMM Do YYYY")}
-                </div>
-                <div className="col s6 m3">
-                  <label>End</label><br />
-                  {moment(job.endDate).format("dddd, MMMM Do YYYY")}
-                </div>
-                <div className="col s6 m3">
-                <label>Location</label><br />
-                {job.location}
-                </div>
-                <div className="col s6 m3">
-                <label>Budget</label><br />
-                ${job.budget}.00 
-                </div>
+          <div className="row z-depth-2">
+            <div className="col s12">
+              <h1>{job.title} <small className="grey-text">posted in {job.category}</small></h1>
+              <hr/>
+              <p className="grey-text text-darken-2">{job.description}</p>
+              <p className="grey-text">The job starts on <strong className="teal-text">{moment(job.startDate).format("dddd, MMMM Do YYYY")}</strong> and ends on <strong className="teal-text">{moment(job.endDate).format("dddd, MMMM Do YYYY")}</strong></p>
+              <p className="green-text flow-text right">${job.budget}</p>
             </div>
-
+          </div>
+          
+          <div className="row">
+            <div className="col s12">
+              <QuoteForm jobid={job._id} />
+            </div>
+          </div>
 
         </div>
-
-
-      <QuoteForm jobid={job._id}/>
-
 
       </div>
     )

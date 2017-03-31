@@ -83,6 +83,11 @@ class App extends React.Component {
         <div>
           {this.props.children}
         </div>
+        <div className="cyan">
+          <div className="container white-text">
+            Put some additional info here. maybe some links?
+          </div>
+        </div>
       </div>
     );
   }
