@@ -83,11 +83,29 @@ class App extends React.Component {
         <div>
           {this.props.children}
         </div>
-        <div className="cyan">
-          <div className="container white-text">
-            Put some additional info here. maybe some links?
+        <br/>
+        <br/>
+        <footer className="cyan darken-4">
+          <div className="container">
+            <br/>
+            <div className="row">
+              <div className="col s12 m6">
+                <ul>
+                  <li><Link to="/" className="white-text">Home</Link></li>
+                  <li><Link to="/post-a-job" className="white-text">Post a Job</Link></li>
+                  <li><Link to="/find-a-job" className="white-text">Find a Job</Link></li>
+                  <li><Link to="/signin" className="white-text">Sign In</Link></li>
+                  <li><Link to="/signup" className="white-text">Sign Up</Link></li>
+                </ul>
+              </div>
+              <div className="col s12 m6">
+                <a href="/" className="brand-logo"><img src="img/handilogo.png"/></a>              
+                <p className="white-text">Handi app helps you connect quickly with available contractors, laborers and handyman in you area and get the best deal for your budget. </p>
+              </div>
+            </div>
+            <br/>
           </div>
-        </div>
+        </footer>
       </div>
     );
   }
