@@ -25,13 +25,13 @@ export default (
      <IndexRoute component={Main} />
      <Route path="signup" component={Auth} title="Sign Up" />
      <Route path="signin" component={Auth} title="Sign In" />
-         <Route path="/find-a-job" component={JobListings} />
-        <Route path="/jobs/:id" component={JobListing} />
-        <Route path="/post-a-job" component={PostAJob} />
+        
         
         <Route component={AuthenticatedRoutes}>
         {/* PROTECTED BY AUTHENTICATION */}
-        
+         <Route path="/find-a-job" component={JobListings} />
+        <Route path="/jobs/:id" component={JobListing} />
+        <Route path="/post-a-job" component={PostAJob} />
        
        <Route component={AdminRoutes}>
            {/* PROTECTED BY ADMIN ACCESS */}

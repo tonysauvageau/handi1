@@ -1,15 +1,33 @@
 import React from 'react';
 import JobPostForm from './JobPostForm';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class Main extends React.Component {
-
+  state = { quotes: [] }
   componentDidMount(){
     $(document).ready(function(){
       $('.slider').slider({indicators: false});
-    });        
+    });    
+
+    $.ajax({
+      url: '/api/quote',
+      type: 'GET'
+    }).done( quotes => {
+      this.setState({ quotes });
+    });
+
   }
 
   render(){
+    let quotes = this.state.quotes.map( quote => {
+      if ( quote.user == this.props.user.username ){
+        return (
+          <li key={quote._id} className="collection-item"><Link to={`/jobs/${quote.jobid}`}>Your quote of {quote.quote}</Link> </li>
+        )
+      }
+    });
+    
     return(
     
         <div className="LandingPageContainer">
@@ -81,10 +99,24 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
+        <div className="container">
+          <div className="row">
+            <div className="col s12">
+              <ul className="collection">
+                {quotes}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     
     )
   }
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps)(Main);
+

@@ -26,7 +26,6 @@ class JobListing extends React.Component {
   updateJob = (e) => {
     let { title, description, startDate, endDate, location, budget } = this.refs;
     e.preventDefault();
-    console.log( title.value );
 
     $.ajax({
       url: `/api/jobs/${this.props.params.id}`,

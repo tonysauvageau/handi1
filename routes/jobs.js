@@ -58,6 +58,11 @@ router.delete('/:id', (req, res) => {
   let jobId = req.params.id;
   Job.findById(jobId, (err, job) => {
     job.remove();
+    Quote.find({ jobId }, (err, quotes) => {
+      quotes.forEach( quote => { 
+        quote.remove() 
+      } );
+    });
     res.status(200).send({success: true});
   });
 });
