@@ -72,7 +72,7 @@ class JobListings extends React.Component {
                     {moment(job.endDate).format("L")}
                   </div>
                   <div className="col s6 m6">
-                    {job.title} - {job.active.toString()}
+                    {job.title}
                   </div>
                   <div className="col s2 m2">
                     {job.budget}
