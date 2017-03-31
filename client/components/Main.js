@@ -10,23 +10,9 @@ class Main extends React.Component {
       $('.slider').slider({indicators: false});
     });    
 
-    $.ajax({
-      url: '/api/quote',
-      type: 'GET'
-    }).done( quotes => {
-      this.setState({ quotes });
-    });
-
   }
 
   render(){
-    let quotes = this.state.quotes.map( quote => {
-      if ( quote.user == this.props.user.username ){
-        return (
-          <li key={quote._id} className="collection-item"><Link to={`/jobs/${quote.jobid}`}>Your quote of {quote.quote}</Link> </li>
-        )
-      }
-    });
     
     return(
     
@@ -96,15 +82,6 @@ class Main extends React.Component {
             </div>
             <div className="col s12 m6">
               <img src="img/girlpainter2.jpg"/>
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col s12">
-              <ul className="collection">
-                {quotes}
-              </ul>
             </div>
           </div>
         </div>
