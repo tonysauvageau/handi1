@@ -194,3 +194,28 @@ form {
 .slider .slides {
     background: #043d43;
 }
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+.slider, .slides {
+    height: 250px !important;
+    }
+
+.slider .slides li .caption {
+    position: absolute:
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    }
+    
+h3 {font-size: 1.75rem !important;
+    }
+    
+h5{font-size: 1.3rem !important;}
+
+div.section {
+    padding: 0 important;
+    margin: 0 important;
+    }
+
+}
