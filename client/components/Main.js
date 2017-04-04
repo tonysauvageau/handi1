@@ -16,7 +16,7 @@ class Main extends React.Component {
     
     return(
     
-        <div className="LandingPageContainer">
+        <div id="main" className="LandingPageContainer">
           <div className="row">
           <div className="slider">
             <ul className="slides">
@@ -56,7 +56,7 @@ class Main extends React.Component {
           <div className="section2Wrap">
             <div className="section">
             <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m6 center">
               <img src="img/girlpainter.jpg"/>
             </div>
             <div className="col s12 m6">
@@ -80,7 +80,7 @@ class Main extends React.Component {
                 <li>Quote your price or rate for doing their job, along with the time frame it may take to do the job and add a description.</li>
               </ul>
             </div>
-            <div className="col s12 m6">
+            <div className="col s12 m6 center">
               <img src="img/girlpainter2.jpg"/>
             </div>
           </div>
